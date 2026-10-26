@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>klaschuk</title>
+<meta name="description" content="Смены, батарея, деньги и цель — для курьера.">
+<meta name="theme-color" content="#0b0d12">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="klaschuk">
+<meta name="robots" content="noindex">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="stylesheet" href="style.css?v=8">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="g-accent" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffb020"/><stop offset="1" stop-color="#ff7a1a"/></linearGradient>
+    <symbol id="i-timer" viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M10 2h4"/></symbol>
+    <symbol id="i-zap" viewBox="0 0 24 24"><path d="M13 2 4 14h8l-1 8 9-12h-8l1-8z"/></symbol>
+    <symbol id="i-euro" viewBox="0 0 24 24"><path d="M4 10h11M4 14h9M19 6a7.7 7.7 0 0 0-5.2-2A7.9 7.9 0 0 0 6 12c0 4.4 3.5 8 7.8 8 2 0 3.8-.8 5.2-2"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></symbol>
+    <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M20 5h-7M9 5H4M20 12h-9M7 12H4M20 19h-5M11 19H4M13 3v4M7 10v4M15 17v4"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5M5 9v12h14V9M10 21v-6h4v6"/></symbol>
+    <symbol id="i-snow" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20M5 5l14 14M19 5 5 19"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M9 5v14M15 5v14"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4v16l12-8z"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+    <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 22V4M5 4h12l-2 4 2 4H5"/></symbol>
+  </defs>
+</svg>
+<header class="top">
+  <h1>klaschuk <i id="live" class="pulse" hidden aria-label="Смена идёт"></i></h1>
+  <button class="icon" data-tab="settings" aria-label="Настройки"><svg class="ic" aria-hidden="true"><use href="#i-sliders"/></svg></button>
+</header>
+<main id="view"></main>
+<nav class="tabs" id="tabs" aria-label="Разделы">
+  <button data-tab="shift"><svg class="ic" aria-hidden="true"><use href="#i-timer"/></svg>Смена</button>
+  <button data-tab="battery"><svg class="ic" aria-hidden="true"><use href="#i-zap"/></svg>Батарея</button>
+  <button data-tab="money"><svg class="ic" aria-hidden="true"><use href="#i-euro"/></svg>Деньги</button>
+  <button data-tab="goal"><svg class="ic" aria-hidden="true"><use href="#i-target"/></svg>Цель</button>
+</nav>
+<div id="toast" class="toast" role="status" aria-live="polite" hidden><span></span><button hidden></button></div>
+<input type="file" id="importFile" accept="application/json,.json" hidden>
+<script src="app.js?v=8"></script>
+</body>
+</html>

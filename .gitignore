@@ -1,0 +1,11 @@
+
+# --- общие исключения (добавлено при переносе на GitHub 2026-10-26) ---
+.venv/
+venv/
+node_modules/
+__pycache__/
+*.pyc
+.env
+.env.local
+.DS_Store
+*.log
