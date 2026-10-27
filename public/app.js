@@ -371,9 +371,17 @@
       </section>`;
   }
 
+  // Старый адрес на сервере: подсказать переезд на GitHub Pages
+  const NEW_URL = 'https://klaschukk.github.io/klaschuk/';
+  const moveBanner = () => `<section class="card hero">
+      <h2>Приложение переехало</h2>
+      <div class="grid2"><button data-act="export">1. Бэкап</button><a class="btn" href="${NEW_URL}">2. Новый адрес</a></div>
+      <small>На новом: ⚙ → «Загрузить» → выбери файл бэкапа.</small>
+    </section>`;
+
   const VIEWS = { shift: vShift, battery: vBattery, money: vMoney, goal: vGoal, settings: vSettings };
   function render() {
-    $('#view').innerHTML = (VIEWS[ui.tab] || vShift)();
+    $('#view').innerHTML = (location.port === '8092' ? moveBanner() : '') + (VIEWS[ui.tab] || vShift)();
     document.querySelectorAll('[data-tab]').forEach(b => { const on = b.dataset.tab === ui.tab; b.classList.toggle('on', on); if (on) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current'); });
     $('#live').hidden = !S.active;
   }
