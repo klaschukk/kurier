@@ -1,6 +1,6 @@
 // Офлайн-кэш оболочки приложения. При изменении файлов подними VERSION.
-const VERSION = 'kurier-v9';
-const SHELL = ['./', 'index.html', 'style.css?v=8', 'app.js?v=9', 'manifest.json', 'icons/icon-192.png', 'icons/apple-touch-icon.png'];
+const VERSION = 'kurier-v10';
+const SHELL = ['./', 'index.html', 'style.css?v=8', 'app.js?v=10', 'manifest.json', 'icons/icon-192.png', 'icons/apple-touch-icon.png'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(VERSION).then(c => c.addAll(SHELL)).then(() => self.skipWaiting()));

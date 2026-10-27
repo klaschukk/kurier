@@ -372,7 +372,7 @@
   }
 
   // Старый адрес на сервере: подсказать переезд на GitHub Pages
-  const NEW_URL = 'https://klaschukk.github.io/klaschuk/';
+  const NEW_URL = 'https://klaschukk.github.io/kurier/';
   const moveBanner = () => `<section class="card hero">
       <h2>Приложение переехало</h2>
       <div class="grid2"><button data-act="export">1. Бэкап</button><a class="btn" href="${NEW_URL}">2. Новый адрес</a></div>
