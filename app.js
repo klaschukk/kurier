@@ -10,8 +10,8 @@
     homeAddr: 'Сарафово, Бургас', homeKm: 11,
     packWh: 1092, cells: 16, consSingle: 20, consDual: 27, safety: 1.25, cold: false,
     cashLimit: 150, chargerA: 2,
-    goalName: 'Талария у Егора', goalTarget: 2700,
-    msName: 'Поездка на права', msAmount: 1200, msDate: '2027-03-01',
+    goalName: 'Свободная жизнь', goalTarget: 3000,
+    msName: 'Снять квартиру', msAmount: 1500, msDate: '2027-03-01',
   };
 
   function normalize(s) {
@@ -31,13 +31,6 @@
   } catch (e) { /* хранилище недоступно */ }
   const readJSON = k => { try { return JSON.parse(localStorage.getItem(k)); } catch (e) { return null; } };
   let S = normalize(readJSON(KEY));
-  // 23.10.2026: цель сменилась на Таларию (один раз, дальше как настроит сам)
-  try {
-    if (!localStorage.getItem('kurier.goal2')) {
-      S.settings.goalName = DEF.goalName; S.settings.goalTarget = DEF.goalTarget;
-      localStorage.setItem(KEY, JSON.stringify(S)); localStorage.setItem('kurier.goal2', '1');
-    }
-  } catch (e) { /* хранилище недоступно */ }
   const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { toast('Не сохранилось: сделай бэкап'); } };
 
   const u0 = readJSON(UI_KEY) || {};
@@ -341,7 +334,6 @@
         <li><span class="meta">${dm(x.date)}${x.note ? ' · ' + esc(x.note) : ''}</span><div class="row"><b class="${x.amount < 0 ? 'bad' : 'ok'}">${x.amount > 0 ? '+' : ''}${eur(x.amount)}</b><button class="x" data-act="delSav" data-id="${x.id}" aria-label="Удалить запись">${ic('x')}</button></div></li>`).join('')}</ul></section>` : ''}`;
   }
 
-  const GOALS = [['Талария у Егора', 2700], ['Б/у 125 + права', 3300], ['Новый Zontes + права', 4400]];
   const F = (k, label, type) => `<label>${label}<input data-set="${k}" ${type === 'text' ? 'type="text"' : type === 'date' ? 'type="date"' : 'inputmode="decimal"'} value="${esc(S.settings[k])}"></label>`;
   function vSettings() {
     return `
@@ -354,7 +346,6 @@
       <section class="card">
         <h2>Цель</h2>
         ${F('goalName', 'Название', 'text')}
-        <div class="chips">${seg('preset', GOALS.map(([n, t]) => [t, `${t === 2700 ? 'Талария' : n} · €${t}`]), S.settings.goalTarget)}</div>
         ${F('goalTarget', 'Сумма, €')}
         ${F('msName', 'Промежуточная', 'text')}
         <div class="grid2">${F('msAmount', 'Сумма, €')}${F('msDate', 'К дате', 'date')}</div>
@@ -401,7 +392,6 @@
       else if (g === 'mode') { ui.mode = v; saveUi(); }
       else if (g === 'target' || g === 'amps') ui[g] = +v;
       else if (g === 'period') ui.period = v;
-      else if (g === 'preset') { const p = GOALS.find(([, t]) => t === +v); S.settings.goalTarget = +v; if (p) S.settings.goalName = p[0]; save(); }
       render();
     },
     start() {
